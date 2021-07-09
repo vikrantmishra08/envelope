@@ -1,0 +1,177 @@
+* {
+    box-sizing: border-box;
+  }
+
+  body{
+      margin: 0;
+      padding: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url('1452797510856.jpeg');
+  }
+
+  #wrapper {
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  .envelope {
+    width: 350px;
+    height: 250px;
+    margin: 200px auto 0;
+    background: whitesmoke;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.25);
+    position: relative;
+    perspective: 800px;
+  }
+  .envelope:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: 0 solid rgba(255, 0, 0, 0.7);
+    border-width: 125px 175px;
+    border-top-color: transparent;
+    z-index: 2;
+  }
+  
+  .envelope .flap {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    border: 0 solid transparent;
+    border-width: 125px 160px;
+    z-index: 3;
+  }
+  .envelope .flap.front {
+    border-left-color: orange;
+    border-right-color: orange;
+    border-bottom-color: orange;
+    z-index: 3;
+  }
+  .envelope .flap.front:after {
+    content: "";
+    width: 100%;
+    height: 0;
+    position: absolute;
+    left: -100px;
+    bottom: -50px;
+    border: 0 solid transparent;
+    border-width: 49px 100px;
+    border-bottom-color: orange;
+  }
+  
+  .envelope .flap.top {
+    border-top-width: 55px;
+    border-top-color: orange;
+    z-index: 3;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    -webkit-transform-origin-y: top;
+    -ms-transform-origin-y: top;
+    perspective: 800;
+    transform-style: preserve-3d;
+  }
+  .envelope.open .flap.top {
+    animation-name: flip;
+  }
+  .envelope .flap.top:after {
+    content: "";
+    position: absolute;
+    left: -100px; /* border-left-width */
+    top: -55px; /* border-top-width */
+    width: 100%;
+    height: 0;
+    border: 0 solid transparent;
+    border-width: 54px 100px;
+    border-top-color: orange;
+  }
+  
+  .envelope .letter {
+    position: absolute;
+    width: 342px;
+    height: 200px;
+    background: #d04883;
+    top: 8px;
+    left: 3px;
+    animation-duration: 2s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+    transform-style: preserve-3d;
+  }
+
+  .envelope .letter h2{
+      margin: 80px;
+      font-size: 20px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      text-align: center;
+      font-style: italic;
+      color: whitesmoke;
+
+}
+
+.changecolor{
+    animation: changecolorfresher 3s infinite;
+
+}
+
+@keyframes changecolorfresher{
+    0%{color: white;}
+    25%{color: blue}
+    50%{color: yellow}
+    75%{color: springgreen;}
+    100%{color: black;}
+
+    
+}
+
+  .envelope.open .letter {
+    animation-name: remove;
+  }
+  .envelope .letter:before,
+  .envelope .letter:after {
+    content: "";
+    position: absolute;
+    width: 192px;
+    height: 75%;
+    
+    animation-duration: 1s;
+    animation-delay: 4s;
+    animation-fill-mode: forwards;
+    -webkit-transform-origin-y: top;
+    -ms-transform-origin-y: top;
+    transform-style: preserve-3d;
+ 
+  }
+  .envelope .letter:before {
+    z-index: 1;
+  }
+  
+  .envelope .letter:after {
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+    -webkit-transform-origin-y: bottom;
+    -ms-transform-origin-y: bottom;
+    bottom: 0;
+  }
+
+  
+  @keyframes flip {
+    100% {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+  }
+  
+  @keyframes remove {
+    50% {
+      top: -120px;
+    }
+    100% {
+      top: 8px;
+      z-index: 3;
+    }
+  }
+  
+ 
